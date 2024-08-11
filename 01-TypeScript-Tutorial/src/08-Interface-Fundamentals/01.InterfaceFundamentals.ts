@@ -4,7 +4,7 @@ interface Book {
   readonly isbn: number;
   title: string;
   author: string;
-  genre: string;
+  genre?: string;
 }
 
 const deepWork: Book = {
