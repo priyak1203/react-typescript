@@ -1,22 +1,30 @@
 console.log('TypeScript Loaded');
 
-// Case 1
-const btn = document.querySelector('.test-btn');
+// Generic Element
+// has no access to button specific properties
+const btnGeneric = document.querySelector('.test-btn')!;
+console.log(btnGeneric);
 
-// Element could be null
-btn?.addEventListener('click', () => {
-  console.log('Run time check with optional chaining');
+// Specific Element
+const btnEl = document.querySelector<HTMLButtonElement>('.test-btn')!;
+
+btnEl.disabled = true;
+
+// Checking for Btn
+// Optional Chaining
+const btnElCheck = document.querySelector<HTMLButtonElement>('.test-btn');
+
+btnElCheck?.addEventListener('click', () => {
+  console.log('Testing button ');
 });
 
-if (btn) {
-  // Do something
+// btnElCheck?.disabled = false;  // Results in TypeScript Error
+
+if (btnElCheck) {
+  btnElCheck.disabled = false;
 }
 
-// Case 2
-// Non null assertion operator
+// Type Assertion option
+const btnAssertion = document.querySelector('.test-btn')! as HTMLButtonElement;
 
-const testBtn = document.querySelector('.test-btn')!;
-
-testBtn.addEventListener('click', () => {
-  console.log('Non Null Assertion Operator');
-});
+btnAssertion.disabled = true;
