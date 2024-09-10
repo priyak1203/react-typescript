@@ -225,4 +225,5 @@ main h2 {
   background: var(--white);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-1);
+  text-transform: uppercase;
 }

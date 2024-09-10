@@ -16,6 +16,12 @@ function addTask(task: Task): void {
   tasks.push(task);
 }
 
+function renderTask(task: Task): void {
+  const taskElement = document.createElement('li');
+  taskElement.textContent = task.description;
+  taskListElement?.appendChild(taskElement);
+}
+
 taskForm?.addEventListener('submit', (event) => {
   event.preventDefault();
 
@@ -29,7 +35,9 @@ taskForm?.addEventListener('submit', (event) => {
     // add task to list
     addTask(task);
 
-    // render tasks
+    // render task
+    renderTask(task);
+
     // update local storage
     formInput.value = '';
     return;
