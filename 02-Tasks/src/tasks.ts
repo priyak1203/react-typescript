@@ -10,16 +10,33 @@ type Task = {
   isCompleted: boolean;
 };
 
-const tasks: Task[] = [];
-
+// Add task to the tasks list
 function addTask(task: Task): void {
   tasks.push(task);
 }
 
+// Render task on the UI
 function renderTask(task: Task): void {
   const taskElement = document.createElement('li');
   taskElement.textContent = task.description;
   taskListElement?.appendChild(taskElement);
+}
+
+// Load tasks from localStorage
+function loadTasks(): Task[] {
+  const storedTasks = localStorage.getItem('tasks');
+  return storedTasks ? JSON.parse(storedTasks) : [];
+}
+
+// Retrieve tasks from localStorage
+const tasks: Task[] = loadTasks();
+
+// Render tasks on page load
+tasks.forEach(renderTask);
+
+// update tasks in local storage
+function updateStorage(): void {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 taskForm?.addEventListener('submit', (event) => {
@@ -39,6 +56,8 @@ taskForm?.addEventListener('submit', (event) => {
     renderTask(task);
 
     // update local storage
+    updateStorage();
+
     formInput.value = '';
     return;
   }
