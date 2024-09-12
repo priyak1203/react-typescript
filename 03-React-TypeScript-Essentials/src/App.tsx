@@ -4,7 +4,7 @@ function App() {
   return (
     <main>
       <h2>React & TypeScript</h2>
-      <Component name="Jonas" id={123} />
+      <Component name="Rohan" id={128} />
     </main>
   );
 }
