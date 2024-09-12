@@ -1,10 +1,10 @@
-import Component from './01-return';
+import Component from './02-props';
 
 function App() {
   return (
     <main>
       <h2>React & TypeScript</h2>
-      <Component />
+      <Component name="peter" id={123} />
     </main>
   );
 }
