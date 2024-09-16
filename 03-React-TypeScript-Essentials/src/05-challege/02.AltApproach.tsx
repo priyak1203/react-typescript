@@ -13,7 +13,8 @@ const Component = (props: ProfileCardProps) => {
   return (
     <article className={className}>
       <h2>User : {name}</h2>
-      {type === 'advanced' ? <h2>Email: {email}</h2> : null}
+      {/* {props.type === 'advanced' && <p>Email: {props.email}</p>} */}
+      {email && <h2>Email : {email}</h2>}
     </article>
   );
 };
