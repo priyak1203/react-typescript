@@ -7,7 +7,12 @@ type UpdateCountAction = {
   type: 'increment' | 'decrement' | 'reset';
 };
 
-type CounterAction = UpdateCountAction;
+type SetStatusAction = {
+  type: 'setStatus';
+  payload: 'active' | 'inactive';
+};
+
+type CounterAction = UpdateCountAction | SetStatusAction;
 
 export const initialState: CounterState = {
   count: 0,
@@ -27,6 +32,9 @@ export const counterReducer = (
 
     case 'reset':
       return { ...state, count: 0 };
+
+    case 'setStatus':
+      return { ...state, status: action.payload };
 
     default:
       return state;

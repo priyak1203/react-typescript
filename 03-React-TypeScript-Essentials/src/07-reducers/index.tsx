@@ -22,13 +22,13 @@ const Component = () => {
       <div className="btn-container">
         <button
           className="btn"
-          onClick={() => console.log('set status to active')}
+          onClick={() => dispatch({ type: 'setStatus', payload: 'active' })}
         >
           set status to active
         </button>
         <button
           className="btn"
-          onClick={() => console.log('set status to inactive')}
+          onClick={() => dispatch({ type: 'setStatus', payload: 'inactive' })}
         >
           set status to inactive
         </button>
