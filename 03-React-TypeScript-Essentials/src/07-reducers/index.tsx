@@ -1,4 +1,9 @@
+import { useReducer } from 'react';
+import { counterReducer, initialState } from './reducer';
+
 const Component = () => {
+  const [state, dispatch] = useReducer(counterReducer, initialState);
+
   return (
     <div>
       <h2>Count: 0</h2>
