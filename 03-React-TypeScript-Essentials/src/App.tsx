@@ -1,4 +1,4 @@
-import Component from './08-fetch-data/fetch-index';
+import Component from './09-rtk';
 
 function App() {
   return (
