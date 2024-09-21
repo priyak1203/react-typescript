@@ -6,9 +6,13 @@ import { type Task } from './types';
 const Component = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
+  const addTask = (task: Task) => {
+    setTasks([...tasks, task]);
+  };
+
   return (
     <section>
-      <Form />
+      <Form addTask={addTask} />
       <List />
     </section>
   );

@@ -1,6 +1,11 @@
 import { useState } from 'react';
+import { type Task } from './types';
 
-const Form = () => {
+type FormProps = {
+  addTask: (task: Task) => void;
+};
+
+const Form = ({ addTask }: FormProps) => {
   const [text, setText] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -10,7 +15,12 @@ const Form = () => {
       return;
     }
     // add Task
-    console.log(text);
+    addTask({
+      id: new Date().getTime().toString(),
+      description: text,
+      isCompleted: false,
+    });
+
     setText('');
   };
 
