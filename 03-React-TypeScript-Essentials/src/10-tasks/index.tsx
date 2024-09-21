@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Form from './Form';
 import List from './List';
 import { type Task } from './types';
 
+// load tasks from localstorage
+function loadTasks(): Task[] {
+  const storedTasks = localStorage.getItem('tasks');
+  return storedTasks ? JSON.parse(storedTasks) : [];
+}
+
+// update localstorage
+function updateStorage(tasks: Task[]): void {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
 const Component = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(loadTasks());
 
   const addTask = (task: Task) => {
     setTasks([...tasks, task]);
@@ -20,6 +31,10 @@ const Component = () => {
       })
     );
   };
+
+  useEffect(() => {
+    updateStorage(tasks);
+  }, [tasks]);
 
   return (
     <section>
