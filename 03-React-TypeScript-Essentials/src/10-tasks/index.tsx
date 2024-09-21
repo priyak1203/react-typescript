@@ -8,7 +8,6 @@ const Component = () => {
 
   return (
     <section>
-      <h2>Tasks</h2>
       <Form />
       <List />
     </section>
